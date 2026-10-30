@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo HTML, CSS e DOM</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: lightgray;
+            padding: 15px;
+        }
+
+        main {
+            background-color: white;
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        footer {
+            background-color: gray;
+            padding: 20px;
+        }
+
+        .bloco-footer {
+            padding: 15px;
+            margin: 10px;
+        }
+
+        #bloco1 {
+            background-color: lightcoral;
+        }
+
+        #bloco2 {
+            background-color: lightgreen;
+        }
+
+        #bloco3 {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Meu Site</h1>
+    </header>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+    </nav>
+
+    <main id="conteudo">
+        <!-- O JavaScript criará os elementos aqui -->
+    </main>
+
+    <footer>
+        <div class="bloco-footer" id="bloco1">
+            <p>Primeira div do footer</p>
+        </div>
+
+        <div class="bloco-footer" id="bloco2">
+            <p>Segunda div do footer</p>
+        </div>
+
+        <div class="bloco-footer" id="bloco3">
+            <p>Terceira div do footer</p>
+        </div>
+    </footer>
+
+    <script>
+        // Aplicar os estilos exclusivamente pelo JavaScript.
+        document.body.style.cssText = "margin: 0; padding: 0; font-family: Arial, sans-serif; color: #24313d; background: #eef4f2; text-align: center;";
+        document.querySelector("header").style.cssText = "background: #1f6b50; color: white; padding: 24px;";
+        document.querySelector("nav").style.cssText = "background: #d9e8df; padding: 16px; display: flex; justify-content: center; gap: 24px;";
+        document.querySelectorAll("nav a").forEach(link => {
+            link.style.cssText = "color: #174d3a; font-weight: bold; text-decoration: none;";
+        });
+        const main = document.getElementById("conteudo");
+        main.style.cssText = "box-sizing: border-box; max-width: 900px; min-height: 200px; margin: 28px auto; padding: 28px; background: white; border-radius: 12px; line-height: 1.7; text-align: center;";
+        document.querySelector("footer").style.cssText = "background: #263a32; padding: 16px; color: #17251f;";
+        document.querySelectorAll(".bloco-footer").forEach(bloco => {
+            bloco.style.cssText += "border-radius: 8px; display: inline-block; min-width: 180px;";
+        });
+
+        // Criar o conteúdo da página sobre a Síria.
+        const titulo = document.createElement("h1");
+        titulo.textContent = "Síria: história, cultura e desafios";
+        main.appendChild(titulo);
+
+        const paragrafo1 = document.createElement("p");
+        paragrafo1.textContent = "A Síria é um país do Oriente Médio, situado na costa oriental do mar Mediterrâneo. Sua capital é Damasco, uma das cidades mais antigas continuamente habitadas do mundo.";
+        main.appendChild(paragrafo1);
+
+        const imagem = document.createElement("img");
+        imagem.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 260'%3E%3Crect width='600' height='260' fill='%23fff'/%3E%3Crect y='0' width='600' height='87' fill='%23007a3d'/%3E%3Crect y='173' width='600' height='87' fill='%23ce1126'/%3E%3Ctext x='300' y='158' text-anchor='middle' font-size='42' fill='%23000'%3E%E2%98%85%20%E2%98%85%20%E2%98%85%3C/text%3E%3C/svg%3E";
+        imagem.alt = "Ilustração inspirada nas cores da bandeira da Síria";
+        imagem.style.cssText = "display: block; width: min(100%, 600px); height: auto; margin: 24px auto; border-radius: 8px;";
+        main.appendChild(imagem);
+
+        const paragrafo2 = document.createElement("p");
+        paragrafo2.textContent = "A história síria reúne influências de diferentes povos e civilizações. A região preserva importantes sítios arqueológicos, tradições artísticas e uma culinária conhecida por seus sabores e especiarias.";
+        main.appendChild(paragrafo2);
+
+        const paragrafo3 = document.createElement("p");
+        paragrafo3.textContent = "Desde 2011, o país enfrenta um conflito que provocou grande sofrimento, deslocamento de pessoas e danos a comunidades e patrimônios. A reconstrução e a ajuda humanitária continuam sendo desafios importantes.";
+        main.appendChild(paragrafo3);
+
+        const subtitulo = document.createElement("h2");
+        subtitulo.textContent = "Fatos sobre a Síria";
+        main.appendChild(subtitulo);
+
+        const lista = document.createElement("ol");
+        lista.style.cssText = "display: inline-block; max-width: 650px; text-align: left; line-height: 1.8;";
+        [
+            "Capital: Damasco.",
+            "Idioma oficial: árabe.",
+            "A Síria faz fronteira com Turquia, Iraque, Jordânia, Israel e Líbano.",
+            "Alepo e Palmira estão entre os lugares históricos mais conhecidos do país."
+        ].forEach(texto => {
+            const item = document.createElement("li");
+            item.textContent = texto;
+            lista.appendChild(item);
+        });
+        main.appendChild(lista);
+    </script>
+
